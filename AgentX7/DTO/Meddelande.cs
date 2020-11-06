@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AgentX7.DTO
@@ -13,8 +14,11 @@ namespace AgentX7.DTO
     }
     public class MeddelandeUT
     {
+        [JsonPropertyName("id")]
         public int Id { get; set; }
+        [JsonPropertyName("spyhandle")]
         public string Spyhandle { get; set; }
+        [JsonPropertyName("binary")]
         public string Binary { get; set; }
     }
 }
