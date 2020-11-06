@@ -15,10 +15,10 @@ namespace AgentX7.DTO
     public class MeddelandeUT
     {
         [JsonPropertyName("id")]
-        public int id { get; set; }
+        public int Id { get; set; }
         [JsonPropertyName("spyhandle")]
-        public string spyhandle { get; set; }
+        public string Spyhandle { get; set; }
         [JsonPropertyName("binary")]
-        public string binary { get; set; }
+        public string Binary { get; set; }
     }
 }

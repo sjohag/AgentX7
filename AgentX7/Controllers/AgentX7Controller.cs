@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AgentX7.DTO;
 using System.Net.Http;
+using System.Net.Http.Json;
 
 namespace AgentX7.Controllers
 {
@@ -27,9 +28,9 @@ namespace AgentX7.Controllers
             _logger.LogError(System.Text.Json.JsonSerializer.Serialize(message));
             var meddelandeUT = new MeddelandeUT
             {
-                id = 3,
-                spyhandle = "AgentX7",
-                binary = $"{message.Binary} 01110010 01110101"
+                Id = 3,
+                Spyhandle = "AgentX7",
+                Binary = $"{message.Binary} 01110010 01110101"
             };
             _logger.LogError(System.Text.Json.JsonSerializer.Serialize(meddelandeUT));
             using var client = new HttpClient();
