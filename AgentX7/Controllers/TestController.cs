@@ -11,17 +11,17 @@ namespace AgentX7.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AgentX7Controller : ControllerBase
+    public class TestController : ControllerBase
     {
-        private readonly ILogger<AgentX7Controller> _logger;
+        private readonly ILogger<TestController> _logger;
 
-        public AgentX7Controller(ILogger<AgentX7Controller> logger)
+        public TestController(ILogger<TestController> logger)
         {
             _logger = logger;
         }
 
         [HttpPost]
-        public void Post(MeddelandeIN message)
+        public ActionResult<MeddelandeUT> Post(MeddelandeIN message)
         {
             Console.Write(("Received message"));
             var meddelandeUT = new MeddelandeUT
@@ -30,9 +30,7 @@ namespace AgentX7.Controllers
                 Spyhandle = "AgentX7",
                 Binary = $"{message.Binary} 01110010 01110101"
             };
-            using var client = new HttpClient();
-            var url = $"https://prod-80.westeurope.logic.azure.com:443/workflows/4b7a0f50fb9d4877970c1235825427ce/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JH_RoBQJe1UsByRsY_DX8XI9TkkjpyN1i57kDaa9wBI";
-            client.PostAsJsonAsync(url, meddelandeUT);
+            return meddelandeUT;
         }
     }
 }
