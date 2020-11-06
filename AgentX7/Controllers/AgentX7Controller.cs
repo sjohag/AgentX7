@@ -33,7 +33,11 @@ namespace AgentX7.Controllers
             };
             using var client = new HttpClient();
             var url = $"https://auth.azure-api.net/secrets";
-            client.PostAsJsonAsync(url, meddelandeUT);
+            var response = client.PostAsJsonAsync(url, meddelandeUT);
+            if (response.IsCompletedSuccessfully)
+                _logger.LogError("OK, meddelandet skickat");
+            else
+                _logger.LogError("FEL, meddelandet inte skickat");
         }
     }
 }
