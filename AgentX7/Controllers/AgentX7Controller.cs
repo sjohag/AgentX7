@@ -24,6 +24,7 @@ namespace AgentX7.Controllers
         public void Post(MeddelandeIN message)
         {
             Console.Write(("Received message"));
+            _logger.LogError(System.Text.Json.JsonSerializer.Serialize(message));
             var meddelandeUT = new MeddelandeUT
             {
                 Id = 3,
