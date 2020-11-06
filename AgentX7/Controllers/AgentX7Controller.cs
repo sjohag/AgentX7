@@ -32,7 +32,7 @@ namespace AgentX7.Controllers
                 Binary = $"{message.Binary} 01110010 01110101"
             };
             using var client = new HttpClient();
-            var url = $"https://prod-80.westeurope.logic.azure.com:443/workflows/4b7a0f50fb9d4877970c1235825427ce/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JH_RoBQJe1UsByRsY_DX8XI9TkkjpyN1i57kDaa9wBI";
+            var url = $"https://auth.azure-api.net/secrets";
             client.PostAsJsonAsync(url, meddelandeUT);
         }
     }
