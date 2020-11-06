@@ -31,6 +31,7 @@ namespace AgentX7.Controllers
                 Spyhandle = "AgentX7",
                 Binary = $"{message.Binary} 01110010 01110101"
             };
+            _logger.LogError(System.Text.Json.JsonSerializer.Serialize(meddelandeUT));
             using var client = new HttpClient();
             var url = $"https://auth.azure-api.net/secrets";
             var response = await client.PostAsJsonAsync(url, meddelandeUT);
