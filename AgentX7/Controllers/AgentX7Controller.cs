@@ -21,7 +21,7 @@ namespace AgentX7.Controllers
         }
 
         [HttpPost]
-        public void Post(MeddelandeIN message)
+        public async Task Post(MeddelandeIN message)
         {
             Console.Write(("Received message"));
             _logger.LogError(System.Text.Json.JsonSerializer.Serialize(message));
@@ -33,8 +33,8 @@ namespace AgentX7.Controllers
             };
             using var client = new HttpClient();
             var url = $"https://auth.azure-api.net/secrets";
-            var response = client.PostAsJsonAsync(url, meddelandeUT);
-            if (response.IsCompletedSuccessfully)
+            var response = await client.PostAsJsonAsync(url, meddelandeUT);
+            if (response.IsSuccessStatusCode)
                 _logger.LogError("OK, meddelandet skickat");
             else
                 _logger.LogError("FEL, meddelandet inte skickat");
